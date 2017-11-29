@@ -119,6 +119,11 @@ public class ConfigurationRead {
 
 	private File getFile() throws URISyntaxException, IOException {
 		mFile = new File(PFILE);
+		if(!mFile.exists()){
+			URI fileUri = this.getClass().getClassLoader().getResource(PFILE)
+					.toURI();
+			mFile = new File(fileUri);
+		}
 		return mFile;
 
 	}

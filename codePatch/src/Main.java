@@ -71,6 +71,10 @@ public class Main {
 					}else{
 						copyFile(filepath, despath+"/WEB-INF/classes/"+filepathend);
 					}
+				}else if(str.contains("/src/main/resources/")){
+					String filepathend = str.substring(str.indexOf("/src/main/resources/")+20,str.length());
+					String filepath = filepathpre+"/WEB-INF/classes/"+filepathend;
+					copyFile(filepath, despath+"/WEB-INF/classes/"+filepathend);
 				}else if(str.contains("/src/main/webapp/")){
 					String filepathend = str.substring(str.indexOf("/src/main/webapp/")+17,str.length());
 					if(xiangmu.equals("")){
