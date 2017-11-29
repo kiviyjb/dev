@@ -36,8 +36,9 @@ public class Main {
 				if(!xiangmu.equals("")&&!str.contains("/"+xiangmu+"/")||!str.contains("."))
 					continue;
 				String filepathpre = workpath+xiangmu;
+				 
 				
-				
+				 
 				if(str.contains("/src/main/java/")){
 					String filepathend = str.substring(str.indexOf("/src/main/java/")+15,str.length());
 					if(xiangmu.equals("")){
