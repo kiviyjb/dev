@@ -73,14 +73,25 @@ public class Main {
 						copyFile(filepath, despath+"/WEB-INF/classes/"+filepathend);
 					}
 				}else if(str.contains("/src/main/resources/")){
+					if(xiangmu.equals("")){
+						Pattern pattern1 = Pattern.compile(".*/(.*)/src");
+						Matcher m  = pattern1.matcher(str);
+						if(m.find()){
+							xiangmu=m.group(1);
+						}	
+						filepathpre=workpath+xiangmu;
+						despath = outpath+xiangmu;
+					}
 					String filepathend = str.substring(str.indexOf("/src/main/resources/")+20,str.length());
 					String filepath = filepathpre+"/WEB-INF/classes/"+filepathend;
+					if(xiangmutime.equals("")){
+						xiangmutime = getXiangmutime(filepath);
+						despath = despath+"/"+xiangmu+" "+xiangmutime;
+					}
 					copyFile(filepath, despath+"/WEB-INF/classes/"+filepathend);
 				}else if(str.contains("/src/main/webapp/")){
 					String filepathend = str.substring(str.indexOf("/src/main/webapp/")+17,str.length());
 					if(xiangmu.equals("")){
-//						String s1 = str.substring(str.indexOf("/trunk/")+7,str.length());
-//						xiangmu = s1.substring(0,s1.indexOf("/"));
 						Pattern pattern1 = Pattern.compile(".*/(.*)/src");
 						Matcher m  = pattern1.matcher(str);
 						if(m.find()){
