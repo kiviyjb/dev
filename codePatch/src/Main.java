@@ -20,7 +20,7 @@ public class Main {
 		try {
 			String changeLog = ConfigurationRead.getInstance().getConfigItem("changeLog").trim();
 			File file = new File(changeLog);
-			Scanner in = new Scanner(file,"GBK");
+			Scanner in = new Scanner(file,ConfigurationRead.getInstance().getConfigItem("encode","GBK"));
 			String xiangmu = ConfigurationRead.getInstance().getConfigItem("xiangmu").trim();
 			String workpath =ConfigurationRead.getInstance().getConfigItem("workpath").trim();
 			String outpath = ConfigurationRead.getInstance().getConfigItem("outpath");
@@ -33,8 +33,8 @@ public class Main {
 			while(in.hasNextLine()){
 				String str = in.nextLine().trim();
 				System.out.println(str);
-				if(!xiangmu.equals("")&&!str.contains("/"+xiangmu+"/")||!str.contains("."))
-					continue;
+//				if(!xiangmu.equals("")&&!str.contains("/"+xiangmu+"/")||!str.contains("."))
+//					continue;
 				String filepathpre = workpath+xiangmu;
 				 
 				
